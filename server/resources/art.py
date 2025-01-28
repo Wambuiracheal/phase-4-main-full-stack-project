@@ -18,29 +18,29 @@ class Artwork(Resource):
         db.session.commit()
         return new_artwork.to_dict()
 
-# class ArtworkResource(Resource):
-#     def get(self, id):
-#         artwork = Artwork.query.get(id)
-#         if not artwork:
-#             return{'error': 'Artwork not found, Invalid'}, 404
-#         return jsonify(artwork.to_dict(),200)
-#     def patch(self,id):
-#         data = request.get_json()
-#         artwork = Artwork.query.get(id)
-#         if not artwork:
-#             return({'error': 'Artwork trying to update cannot be found'}), 404
-#         if 'artist' in data:
-#             artwork.artist = data ['artist']
-#         if 'title' in data:
-#             artwork.artist = data ['title']
-#         if 'image' in data:
-#             artwork.artist = data ['image']
-#         if 'price' in data:
-#             artwork.artist = data ['price']
-#         if 'category' in data:
-#             artwork.artist = data ['category']
-#         db.session.commit()
-#         return (artwork.to_dict()), 200
+class ArtworkResource(Resource):
+    def get(self, id):
+        artwork = Artwork.query.get(id)
+        if not artwork:
+            return{'error': 'Artwork not found, Invalid'}, 404
+        return jsonify(artwork.to_dict(),200)
+    def patch(self,id):
+        data = request.get_json()
+        artwork = Artwork.query.get(id)
+        if not artwork:
+            return({'error': 'Artwork trying to update cannot be found'}), 404
+        if 'artist' in data:
+            artwork.artist = data ['artist']
+        if 'title' in data:
+            artwork.artist = data ['title']
+        if 'image' in data:
+            artwork.artist = data ['image']
+        if 'price' in data:
+            artwork.artist = data ['price']
+        if 'category' in data:
+            artwork.artist = data ['category']
+        db.session.commit()
+        return (artwork.to_dict()), 200
     
     def delete(self,id):
         artwork = Artwork.query.get(id)
