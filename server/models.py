@@ -20,7 +20,7 @@ class Category(db.Model, SerializerMixin):
     name = db.Column(db.String(120), nullable=False)
     
     # relationships
-    artworks = db.relationships('Artwork', back_populates='categories', lazy=True)
+    artworks = db.relationship('Artwork', back_populates='categories', lazy=True)
 
 class Artwork(db.Model, SerializerMixin):
     __tablename__ = 'artworks'
@@ -29,7 +29,7 @@ class Artwork(db.Model, SerializerMixin):
     title = db.Column(db.String(120), nullable=False)
     image = db.Column(db.String(120), nullable=False)
     price = db.Column(db.Float, nullable=False)
-    category_id = db.Column(db.Integer(120), db.ForeignKey(Category.id))
+    category_id = db.Column(db.Integer, db.ForeignKey(Category.id))
 
     # relationships
     exhibitions = db.relationship('Exhibition', backref='artwork', lazy=True)
