@@ -7,16 +7,16 @@ class Artwork(Resource):
         artworks = Artwork.query.all()
         return jsonify([artwork.to_dict() for artwork in artworks ])
     
-    # def post(self):
-    #     data.request.get_json()
-    #     if not data or not all(key in data for key in ['artist', 'title', 'image', 'price', 'category']):
-    #         return ({'error': 'Missing required fields'}),400
-    #     new_artwork = Artwork(
-    #          **data
-    #     )
-    #     db.session.add(new_artwork)
-    #     db.session.commit()
-    #     return new_artwork.to_dict()
+    def post(self):
+        data.request.get_json()
+        if not data or not all(key in data for key in ['artist', 'title', 'image', 'price', 'category']):
+            return ({'error': 'Missing required fields'}),400
+        new_artwork = Artwork(
+             **data
+        )
+        db.session.add(new_artwork)
+        db.session.commit()
+        return new_artwork.to_dict()
 
 # class ArtworkResource(Resource):
 #     def get(self, id):
