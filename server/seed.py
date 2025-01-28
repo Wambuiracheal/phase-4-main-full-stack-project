@@ -7,12 +7,14 @@ categories = [
     {"name": "Photography"},
 ]
 
-# artworks = [
-#     {"artist": "Vincent van Gogh", "title": "Starry Night", "image": "starry_night.jpg", "price": 1500, "category_name": "Painting"},
-#     {"artist": "Leonardo da Vinci", "title": "Mona Lisa", "image": "mona_lisa.jpg", "price": 2000, "category_name": "Painting"},
-#     {"artist": "Michelangelo", "title": "David", "image": "david.jpg", "price": 3000, "category_name": "Sculpture"},
-#     {"artist": "Ansel Adams", "title": "Moonrise", "image": "moonrise.jpg", "price": 1200, "category_name": "Photography"},
-# ]
+artworks = [
+    {"artist": "Vincent van Gogh", "title": "Starry Night", "image": "starry_night.jpg", "price": 1500, "category_name": "Painting"},
+    {"artist": "Leonardo da Vinci", "title": "Mona Lisa", "image": "mona_lisa.jpg", "price": 2000, "category_name": "Painting"},
+    {"artist": "Michelangelo", "title": "David", "image": "david.jpg", "price": 3000, "category_name": "Sculpture"},
+    {"artist": "Ansel Adams", "title": "Moonrise", "image": "moonrise.jpg", "price": 1200, "category_name": "Photography"},
+]
+
+
 
 # def seed_data():
 #     with app.app_context():
