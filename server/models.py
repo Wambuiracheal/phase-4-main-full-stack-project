@@ -1,6 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy_serializer import SerializerMixin
 from datetime import datetime
+from sqlalchemy import Enum
 
 db = SQLAlchemy()
 
@@ -9,18 +10,17 @@ class User(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
-    password = db.Column(db.String(120), nullable=False)
 
     # relationships
-    exhibitions = db.relationship('Exhibition', back_populates='users', lazy=True)
+    exhibitions = db.relationship('Exhibition', back_populates='user', cascade='all,delete-orphan')
 
-class Category(db.Model, SerializerMixin):
-    __tablename__ = 'categories'
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(120), nullable=False)
+# class Category(db.Model, SerializerMixin):
+#     __tablename__ = 'categories'
+#     id = db.Column(db.Integer, primary_key=True)
+#     name = db.Column(db.String(120), nullable=False)
     
-    # relationships
-    artworks = db.relationship('Artwork', back_populates='categories', lazy=True)
+#     # relationships
+#     artworks = db.relationship('Artwork', back_populates='categories', cascade='all,delete-orphan')
 
 class Artwork(db.Model, SerializerMixin):
     __tablename__ = 'artworks'
@@ -29,17 +29,21 @@ class Artwork(db.Model, SerializerMixin):
     title = db.Column(db.String(120), nullable=False)
     image = db.Column(db.String(120), nullable=False)
     price = db.Column(db.Float, nullable=False)
-    category_id = db.Column(db.Integer, db.ForeignKey(Category.id))
+    category = db.Column(db.Enum('painting','sculpture','photography'))
 
     # relationships
-    exhibitions = db.relationship('Exhibition', backref='artwork', lazy=True)
+    exhibitions = db.relationship('Exhibition', back_populates='artwork', cascade='all,delete-orphan')
 
 class Exhibition(db.Model, SerializerMixin):
     __tablename__ = 'exhibitions'
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey(User.id))
-    artwork_id = db.Column(db.Integer, db.ForeignKey(Artwork.id))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    artwork_id = db.Column(db.Integer, db.ForeignKey('artworks.id'))
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+
+    # relationships
+    user = db.relationship('User',  back_populates='exhibitions')
+    artwork = db.relationship('Artwork', back_populates='exhibitions')
 
 
     

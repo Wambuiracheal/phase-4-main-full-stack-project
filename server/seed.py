@@ -1,69 +1,45 @@
+from random import randint, choice as c
+from faker import Faker
+from models import User, Artwork, Exhibition,db
 from app import app
-from models import db, Category, Artwork, User
 
-users = {
-    {"id": 1, "email": "anne@gmail.com", "name": "Anne Faith"},
-    {"id": 2, "email": "mike@gmail.com", "name": "Anthony Mike"},
-    {"id": 3, "email": "alex@gmail.com", "name": "Alex Luke"},
-    {"id": 4, "email": "John@gmail.com", "name": "Nicholas John"},
-    {"id": 5, "email": "Caroline@gmail.com", "name": "Caroline John"},
-}
+fake = Faker()
+with app.app_context():
+    User.query.delete()
+    Artwork.query.delete()
+    Exhibition.query.delete()
 
-categories = [
-    {"name": "Painting"},
-    {"name": "Sculpture"},
-    {"name": "Photography"},
-]
+    users = []
+    for _ in range(10):
+        user = User(
+            name=fake.name(),
+            email=fake.email(),
+        )
 
-artworks = [
-    {"artist": "Vincent van Gogh", "title": "Starry Night", "image": "starry_night.jpg", "price": 1500, "category_name": "Painting"},
-    {"artist": "Leonardo da Vinci", "title": "Mona Lisa", "image": "mona_lisa.jpg", "price": 2000, "category_name": "Painting"},
-    {"artist": "Michelangelo", "title": "David", "image": "david.jpg", "price": 3000, "category_name": "Sculpture"},
-    {"artist": "Ansel Adams", "title": "Moonrise", "image": "moonrise.jpg", "price": 1200, "category_name": "Photography"},
-]
+        users.append(user)
+        db.session.add(user)
 
-def seed():
-    with app.app_context():
+    artworks = []
+    for _ in range(10):
+        artwork = Artwork(
+            artist = fake.name(),
+            title = fake.catch_phrase(),
+            image = fake.url(),
+            price = randint(10000, 100000),
+            category = c(['painting','sculpture','photography'])
+        )
 
-        db.session.query(User).delete()
-        db.session.query(Artwork).delete()
-        db.session.query(Category).delete()
-        db.session.commit()
+        artworks.append(artwork)
+        db.session.add(artwork)
 
-
-        category_objects = {}
-
-        # users
-        for user_data in users:
-            user = User(email=user_data["email"], name=user_data["name"])
-            db.session.add(user)
-
-        db.session.commit()
-        print("Added users successfully!")
-
-        # categories
-        for category_data in categories:
-            category = Category(name=category_data['name'])
-            db.session.add(category)
-            category_objects[category_data['name']] = category
+    exhibitions = []
+    for _ in range(10):
+        exhibition = Exhibition(
+            user_id = c(range(10)),
+            artwork_id = c(range(10)),
+        )
+        
+        exhibitions.append(exhibition)
+        db.session.add(exhibition)
 
         db.session.commit()
-        print(f'Added categories successfully!')
-
-        # artworks
-        for artwork_data in artworks:
-            category = category_objects[artwork_data["category_name"]]
-            artwork = Artwork(
-                artist=artwork_data["artist"],
-                title=artwork_data["title"],
-                image=artwork_data["image"],
-                price=artwork_data["price"],
-                category_id=category.id
-            )
-            db.session.add(artwork)
-
-        db.session.commit()
-        print("Database seeded successfully!")
-
-if __name__ == "__main__":
-    seed()
