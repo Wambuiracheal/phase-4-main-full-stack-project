@@ -42,10 +42,10 @@ class Artwork(Resource):
 #         db.session.commit()
 #         return (artwork.to_dict()), 200
     
-#     def delete(self,id):
-#         artwork = Artwork.query.get(id)
-#         if not artwork:
-#             return({'error': 'Product not found'}), 404
-#         db.session.delete(artwork)
-#         db.session.commit()
-#         return({'message': 'Artwork Deleted'}), 200
+    def delete(self,id):
+        artwork = Artwork.query.get(id)
+        if not artwork:
+            return({'error': 'Product not found'}), 404
+        db.session.delete(artwork)
+        db.session.commit()
+        return({'message': 'Artwork Deleted'}), 200
