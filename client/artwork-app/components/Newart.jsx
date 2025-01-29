@@ -1,48 +1,48 @@
-// import React,{UseState} from 'react'
+import React,{UseState} from 'react'
 
-// function Newart({art,setArt}){
-//     const url = 'http://127.0.0.1:5000/artworks'
-//     const[newArt,setNewArt] = UseState({
-//         id:0,
-//         artist:'',
-//         title:'',
-//         Image:'',
-//         price:0,
-//         category:''
-//     })
+function Newart({art,setArt}){
+    const url = 'http://127.0.0.1:5000/artworks'
+    const[newArt,setNewArt] = UseState({
+        id:0,
+        artist:'',
+        title:'',
+        Image:'',
+        price:0,
+        category:''
+    })
 
-//     // Handle Change
-//     function handleChange(e){
-//         let name = e.target.name
-//         let value = e.target.value
+    // Handle Change
+    function handleChange(e){
+        let name = e.target.name
+        let value = e.target.value
 
-//         setNewArt({
-//             ...newArt,
-//             [name]:value
-//         })
+        setNewArt({
+            ...newArt,
+            [name]:value
+        })
 
-//     }
+    }
 
-//     function handleSubmit(){
-//     fetch(`${url}`)
-//     method = 'POST'
-//     headers = {
-//         'Content-Type': 'application/json',
-//     }
-//     body = JSON.stringify()
-//     .then(res => res.json())
-//     .then(artpiece => setArt([...art,artpiece]),
-//     setNewArt({
-//         artist:'',
-//         title:'',
-//         Image:'',
-//         price:0,
-//         category:''
-//     })
-// )
-// .catch(error => console.log(error))
+    function handleSubmit(){
+    fetch(`${url}`)
+    method = 'POST'
+    headers = {
+        'Content-Type': 'application/json',
+    }
+    body = JSON.stringify()
+    .then(res => res.json())
+    .then(artpiece => setArt([...art,artpiece]),
+    setNewArt({
+        artist:'',
+        title:'',
+        Image:'',
+        price:0,
+        category:''
+    })
+)
+.catch(error => console.log(error))
 
-// }
+}
 return(
     <div>
         <form onSubmit={handleSubmit}>
