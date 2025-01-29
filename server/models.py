@@ -14,6 +14,8 @@ class User(db.Model, SerializerMixin):
     # relationships
     exhibitions = db.relationship('Exhibition', back_populates='user', cascade='all,delete-orphan')
 
+    serialize_rules = ('-exhibitions.user',)
+
 # class Category(db.Model, SerializerMixin):
 #     __tablename__ = 'categories'
 #     id = db.Column(db.Integer, primary_key=True)
@@ -34,6 +36,8 @@ class Artwork(db.Model, SerializerMixin):
     # relationships
     exhibitions = db.relationship('Exhibition', back_populates='artwork', cascade='all,delete-orphan')
 
+    serialize_rules = ('-exhibitions.artwork',)
+
 class Exhibition(db.Model, SerializerMixin):
     __tablename__ = 'exhibitions'
     id = db.Column(db.Integer, primary_key=True)
@@ -44,6 +48,9 @@ class Exhibition(db.Model, SerializerMixin):
     # relationships
     user = db.relationship('User',  back_populates='exhibitions')
     artwork = db.relationship('Artwork', back_populates='exhibitions')
+
+    serialize_rules = ('-user.exhibitions', '-artwork.exhibitions')
+
 
 
     
