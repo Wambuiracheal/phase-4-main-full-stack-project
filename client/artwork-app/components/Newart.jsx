@@ -43,20 +43,20 @@
 // .catch(error => console.log(error))
 
 // }
-// return(
-//     <div>
-//         <form onSubmit={handleSubmit}>
-//             <input type='text' name='artist' value={newArt.artist} onChange={handleChange} placeholder='Input Artist name...'/>
-//             <input type='text' name='title' value={newArt.title} onChange={handleChange} placeholder='TInput Title...'/>
-//             <input type='text' name='image' value={newArt.image} onChange={handleChange} placeholder='Input Image URL..'/>
-//             <input type='number' name='price' value={newArt.price} onChange={handleChange} placeholder='PInput new price...'/>
-//             <button type='submit'>Add new Art</button>
-//             <input />
-//         </form>
-//     </div>
-// )
+return(
+    <div>
+        <form onSubmit={handleSubmit}>
+            <input type='text' name='artist' value={newArt.artist} onChange={handleChange} placeholder='Input Artist name...'/>
+            <input type='text' name='title' value={newArt.title} onChange={handleChange} placeholder='TInput Title...'/>
+            <input type='text' name='image' value={newArt.image} onChange={handleChange} placeholder='Input Image URL..'/>
+            <input type='number' name='price' value={newArt.price} onChange={handleChange} placeholder='PInput new price...'/>
+            <button type='submit'>Add new Art</button>
+            <input />
+        </form>
+    </div>
+)
 
-// }
+}
 
 
-// export default Newart
+export default Newart
