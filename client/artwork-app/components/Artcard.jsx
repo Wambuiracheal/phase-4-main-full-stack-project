@@ -25,16 +25,16 @@ function handleDelete(){
     .catch(err => console.error(err))
 }
 
-// // CHANGE
-// function handleChange(e){
-//     let name = e.target.name
-//     let value = e.target.value
+// CHANGE
+function handleChange(e){
+    let name = e.target.name
+    let value = e.target.value
     
-//     setNewArt({
-//         ...newArt,
-//         [name]:value
-//     })
-// }
+    setNewArt({
+        ...newArt,
+        [name]:value
+    })
+}
 
 // // UPDATE
 // function handleSubmit(){
