@@ -36,32 +36,32 @@ function handleChange(e){
     })
 }
 
-// // UPDATE
-// function handleSubmit(){
-//     fetch(`${url}/${id}`)
-//     method = 'PATCH'
-//     headers = {
-//         'Content-Type': 'application/json'
-//     }
-//     body = JSON.stringify()
-//     .then(res => res.json())
-//     .then(na => {
-//         let updatedArt = art.map(artpiece =>{
-//             if(artpiece.id === id){
-//                 artpiece.artist = na.artist,
-//                 artpiece.title = na.title,
-//                 artpiece.image = na.image,
-//                 artpiece.price = na.price,
-//                 artpiece.category = na.category
-//             } 
-//             return(artpiece)
-//         })
-//         setArt(updatedArt)
-//         alert(`Updated ${artist}`)
+// UPDATE
+function handleSubmit(){
+    fetch(`${url}/${id}`)
+    method = 'PATCH'
+    headers = {
+        'Content-Type': 'application/json'
+    }
+    body = JSON.stringify()
+    .then(res => res.json())
+    .then(na => {
+        let updatedArt = art.map(artpiece =>{
+            if(artpiece.id === id){
+                artpiece.artist = na.artist,
+                artpiece.title = na.title,
+                artpiece.image = na.image,
+                artpiece.price = na.price,
+                artpiece.category = na.category
+            } 
+            return(artpiece)
+        })
+        setArt(updatedArt)
+        alert(`Updated ${artist}`)
 
-//     })
-//     .catch(err => console.log(err))
-// }
+    })
+    .catch(err => console.log(err))
+}
 // return(
 //     <div className='card'>
 //         <h2>{artist}</h2>
