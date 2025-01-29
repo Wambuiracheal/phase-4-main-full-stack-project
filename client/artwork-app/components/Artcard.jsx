@@ -62,25 +62,25 @@ function handleSubmit(){
     })
     .catch(err => console.log(err))
 }
-// return(
-//     <div className='card'>
-//         <h2>{artist}</h2>
-//         <img src={image} alt={name}/>
-//         <h2>{title}</h2>
-//         <h2>{price}</h2>
-//         <h2>{category}</h2>
-//         <form onSubmit={handleSubmit}>
-//             <input name='New Artist:' type='text' placeholder='enter new artist...' value={newArt.artist} onChange={handleChange}/>
-//             <input name='New Title:' type='text' placeholder='enter new title...' value={newArt.title} onChange={handleChange}/>
-//             <input name='New Image:' type='text' placeholder='enter new image...' value={newArt.artist} onChange={handleChange}/>
-//             <input name='New Price:' type='number' placeholder='enter new price...' value={newArt.price} onChange={handleChange}/>
-//             <input name='New Category:' type='text' placeholder='enter new category...' value={newArt.artist} onChange={handleChange}/>
-//             <button type='submit'>Update</button>
-//         </form>
-//         <button type='button' onClick={handleDelete}>Delete</button>
+return(
+    <div className='card'>
+        <h2>{artist}</h2>
+        <img src={image} alt={name}/>
+        <h2>{title}</h2>
+        <h2>{price}</h2>
+        <h2>{category}</h2>
+        <form onSubmit={handleSubmit}>
+            <input name='New Artist:' type='text' placeholder='enter new artist...' value={newArt.artist} onChange={handleChange}/>
+            <input name='New Title:' type='text' placeholder='enter new title...' value={newArt.title} onChange={handleChange}/>
+            <input name='New Image:' type='text' placeholder='enter new image...' value={newArt.artist} onChange={handleChange}/>
+            <input name='New Price:' type='number' placeholder='enter new price...' value={newArt.price} onChange={handleChange}/>
+            <input name='New Category:' type='text' placeholder='enter new category...' value={newArt.artist} onChange={handleChange}/>
+            <button type='submit'>Update</button>
+        </form>
+        <button type='button' onClick={handleDelete}>Delete</button>
 
-//     </div>
-// )
-// }
+    </div>
+)
+}
 
-// export default Artcard
+export default Artcard
