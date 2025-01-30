@@ -3,7 +3,7 @@
   background: #fff;
   padding: 15px;
   border-radius: 12px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 10px rgba(94, 6, 82, 0.1);
   text-align: center;
   margin: 20px auto;
   transition: 0.3s ease-in-out;
@@ -20,6 +20,12 @@
   margin-bottom: 6px;
 }
 
+.cards{
+  display: flex;
+  gap: 50px;
+  justify-content: space-evenly ;
+}
+
 #image {
   width: 100%;
   height: 180px;
@@ -28,7 +34,7 @@
   margin-bottom: 10px;
 }
 
-/* Smaller form */
+
 form {
   display: flex;
   flex-direction: column;
@@ -149,7 +155,6 @@ button[type="button"]:hover {
   font-size: 17px;
 }
 
-/* General reset */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -162,15 +167,13 @@ body {
   background-color: #f5f5f5;
 }
 
-/* Full-screen slideshow container */
 .slideshow-container {
   position: relative;
   width: 100%;
-  height: 100vh; /* Full height */
+  height: 100vh;
   overflow: hidden;
 }
 
-/* Slide styles */
 .slides {
   width: 100%;
   height: 100%;
@@ -183,7 +186,6 @@ body {
   transition: opacity 1s ease-in-out;
 }
 
-/* Navigation buttons */
 #btn-nav {
   position: absolute;
   top: 50%;
@@ -210,7 +212,6 @@ body {
   right: 10px;
 }
 
-/* Responsive design */
 @media (max-width: 768px) {
   #btn{
     font-size: 1.5rem;
@@ -225,31 +226,25 @@ body {
   }
 }
 
-/* .card-new styling for the background image and overall layout */
 .card-new {
-  background-image: url('https://example.com/background-image.jpg'); /* Replace with your desired background image URL */
-  background-size: cover;
-  background-position: center;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   padding: 20px;
-  color: #fff; /* White text to stand out against dark background */
+  color: #fff;
   text-align: center;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* Title styling */
 .title {
   font-size: 2rem;
   margin-bottom: 20px;
-  color: #fff;
+  color: #cb94d8;
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
 }
-
 
 .art-form {
   background: rgba(0, 0, 0, 0.5); 
