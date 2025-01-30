@@ -33,6 +33,16 @@ class Artwork(db.Model, SerializerMixin):
     price = db.Column(db.Float, nullable=False)
     category = db.Column(db.Enum('painting','sculpture','photography'))
 
+    def to_dict(self):
+        return {
+            "id": self.id, 
+            "artist": self.artist,
+            "title": self.title,
+            "image": self.image,
+            "price": self.price,
+            "category": self.category
+        }
+
     # relationships
     exhibitions = db.relationship('Exhibition', back_populates='artwork', cascade='all,delete-orphan')
 
@@ -50,6 +60,8 @@ class Exhibition(db.Model, SerializerMixin):
     artwork = db.relationship('Artwork', back_populates='exhibitions')
 
     serialize_rules = ('-user.exhibitions', '-artwork.exhibitions')
+
+
 
 
 

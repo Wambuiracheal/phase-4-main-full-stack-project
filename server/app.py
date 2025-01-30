@@ -1,6 +1,5 @@
 from flask import Flask
 from flask_cors import CORS
-from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from models import db
 from flask_restful import Api
@@ -21,6 +20,7 @@ with app.app_context():
 
 api.add_resource(ArtworkDisplayResource, '/artworks')
 api.add_resource(ArtworkResource, '/artworks/<int:id>')
+
 
 @app.route('/')
 def home():

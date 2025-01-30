@@ -2,10 +2,11 @@ from flask_restful import Resource
 from flask import request, jsonify
 from models import Artwork, db
 
+# ARTWORK
 class ArtworkDisplayResource(Resource):
     def get(self):
         artworks = Artwork.query.all()
-        return jsonify([artwork.to_dict() for artwork in artworks])
+        return ([artwork.to_dict() for artwork in artworks])
 
     def post(self):
         data = request.get_json()
