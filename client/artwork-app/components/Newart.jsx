@@ -46,19 +46,23 @@ function Newart({art,setArt}){
 
 }
 return(
-    <div>
+    
+    <div className='card-new'>
+        <br></br>
+        <h1 className='title'>ADD NEW ARTWORK HERE</h1>
+        <br></br>
         <form onSubmit={handleSubmit}>
             <input type='text' name='artist' value={newArt.artist} onChange={handleChange} placeholder='enter artist name...'/><br></br>
             <input type='text' name='title' value={newArt.title} onChange={handleChange} placeholder='enter title...'/><br></br>
             <input type='text' name='image' value={newArt.image} onChange={handleChange} placeholder='enter image URL..'/><br></br>
             <input type='number' name='price' value={newArt.price} onChange={handleChange} placeholder='enter price...'/><br></br>
-            <select name="category" value={newArt.category} onChange={handleChange}>
+            <select name="category" value={newArt.category} onChange={handleChange} className='form-select'>
                 <option value="">Select Category</option>
                 <option value="painting">painting</option>
                 <option value="sculpture">sculpture</option>
                 <option value="photography">photography</option>
             </select><br></br>
-            <button type='submit'>Add new Art</button>
+            <button type='submit' className='submit-btn'>Add new Art</button>
         </form>
     </div>
 )

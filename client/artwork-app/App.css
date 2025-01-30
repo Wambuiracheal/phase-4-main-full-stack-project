@@ -7,6 +7,7 @@
   text-align: center;
   margin: 20px auto;
   transition: 0.3s ease-in-out;
+  
 }
 
 .card:hover {
@@ -147,4 +148,168 @@ button[type="button"]:hover {
   color: rgb(102, 37, 99);
   font-size: 17px;
 }
+
+/* General reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background-color: #f5f5f5;
+}
+
+/* Full-screen slideshow container */
+.slideshow-container {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Full height */
+  overflow: hidden;
+}
+
+/* Slide styles */
+.slides {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 1s ease-in-out;
+}
+
+/* Navigation buttons */
+#btn-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1;
+  border-radius: 5px;
+}
+
+#btn-nav:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  #btn{
+    font-size: 1.5rem;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  #btn {
+    font-size: 1rem;
+    padding: 5px;
+  }
+}
+
+/* .card-new styling for the background image and overall layout */
+.card-new {
+  background-image: url('https://example.com/background-image.jpg'); /* Replace with your desired background image URL */
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  color: #fff; /* White text to stand out against dark background */
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Title styling */
+.title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #fff;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+
+.art-form {
+  background: rgba(0, 0, 0, 0.5); 
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+}
+
+.form-input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #333;
+  font-size: 14px;
+}
+
+.form-select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #333;
+  font-size: 14px;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #ff7f7f;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #ff4c4c; 
+}
+
+@media (max-width: 600px) {
+  .card-new {
+    padding: 10px;
+  }
+
+  .art-form {
+    width: 90%;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+}
+
+
 

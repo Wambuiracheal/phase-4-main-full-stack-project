@@ -20,8 +20,9 @@ const Contact = () => {
   return (
     <div className="contact-container">
       <h2>Contact Us</h2>
+      <br></br>
       <p>Have questions or inquiries? Feel free to reach out!</p>
-
+        <br></br>
       <form className="contact-form" onSubmit={handleSubmit}>
         <input
           type="text"

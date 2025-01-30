@@ -1,75 +1,35 @@
-import React, { useState, useEffect } from "react";
-import "../App.css"; // Import the CSS file
+import React, { useState } from 'react';
+import '../App.css';
 
-const ImageGallery = () => {
-  const images = [
-    { src: "./src/assets/images/pic1.jpeg", alt: "The Woods" },
-    { src: "./src/assets/images/pic2.jpeg", alt: "Cinque Terre" },
-    { src: "./src/assets/images/pic3.jpeg", alt: "Mountains and fjords" },
-    { src: "./src/assets/images/pic4.jpeg", alt: "Northern Lights" },
-    { src: "./src/assets/images/pic5.jpeg", alt: "Nature and sunrise" },
-    { src: "./src/assets/images/pic6.jpeg", alt: "Snowy Mountains" },
-  ];
+const images = [
+  'https://images6.alphacoders.com/476/476288.jpg',
+  'https://images7.alphacoders.com/406/406736.jpg',
+  'https://images6.alphacoders.com/341/341236.jpg',
+  'https://images5.alphacoders.com/134/1345268.png',
+  'https://picfiles.alphacoders.com/302/302369.jpg',
+  'https://picfiles.alphacoders.com/271/271190.jpg',
+  'https://picfiles.alphacoders.com/271/271190.jpg'
+];
 
-  const [currentIndex, setCurrentIndex] = useState(0);
+const App = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    setCurrentSlide((prevSlide) => (prevSlide + 1) % images.length);
   };
 
   const prevSlide = () => {
-    setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + images.length) % images.length
-    );
+    setCurrentSlide((prevSlide) => (prevSlide - 1 + images.length) % images.length);
   };
-
-  const goToSlide = (index) => {
-    setCurrentIndex(index);
-  };
-
-  useEffect(() => {
-    const interval = setInterval(nextSlide, 3000); // Auto-slide every 3 sec
-    return () => clearInterval(interval);
-  }, []);
 
   return (
-    <div className="container">
-      {/* Main Image Display */}
-      <div className="mySlides fade">
-        <div className="numbertext">
-          {currentIndex + 1} / {images.length}
-        </div>
-        <img src={images[currentIndex].src} alt={images[currentIndex].alt} />
-      </div>
-
-      {/* Navigation Buttons */}
-      <a className="prev" onClick={prevSlide}>
-        &#10094;
-      </a>
-      <a className="next" onClick={nextSlide}>
-        &#10095;
-      </a>
-
-      {/* Caption Container */}
-      <div className="caption-container">
-        <p>{images[currentIndex].alt}</p>
-      </div>
-
-      {/* Thumbnail Images */}
-      <div className="row">
-        {images.map((image, index) => (
-          <div className="column" key={index}>
-            <img
-              className={`demo cursor ${index === currentIndex ? "active" : ""}`}
-              src={image.src}
-              alt={image.alt}
-              onClick={() => goToSlide(index)}
-            />
-          </div>
-        ))}
+    <div className="slideshow-container">
+      <div className="slides" style={{ backgroundImage: `url(${images[currentSlide]})` }}>
+        <button id='btn-nav' className="prev" onClick={prevSlide}>❮</button>
+        <button id='btn-nav' className="next" onClick={nextSlide}>❯</button>
       </div>
     </div>
   );
 };
 
-export default ImageGallery;
+export default App;
