@@ -1,25 +1,28 @@
-import React, {UseState} from 'react'
-function Artcard({id,artist,title,price,category}){
+import React, {useState} from 'react'
+
+function Artcard({id,artist,title,image,price,category,art,setArt}){
+    console.log("Artwork ID:", id);
     const url = 'http://127.0.0.1:5000/artworks'
-    const [newArt,setNewArt] = UseState({
-        id:0,
+    const [newArt,setNewArt] = useState({
         artist:'',
         title:'',
-        Image:'',
+        image:'',
         price:0,
-        category:''
+        category:'',
+        id:0
 })
 // DELETE
-function handleDelete(){
-    fetch(`${url}/${id}`)
-    method = 'DELETE'
-    headers = {
-        'Content-Type': 'application/json'
-    }
-    body = JSON.stringify()
+function handleDelete(e){
+    e.preventDefault()
+    fetch(`${url}/${id}`, {
+        method:'DELETE',
+        headers:{
+            'Content-Type': 'application/json'
+        },
+    })
     .then(res => res.json())
     .then(() => {
-        let remainingArt = Art.filter(art => art.id !== id)
+        let remainingArt = art.filter(artpiece => artpiece.id !== id)
         setArt(remainingArt)
     })
     .catch(err => console.error(err))
@@ -29,6 +32,10 @@ function handleDelete(){
 function handleChange(e){
     let name = e.target.name
     let value = e.target.value
+
+    if (name === "category") {
+        value = value.toLowerCase();
+    }
     
     setNewArt({
         ...newArt,
@@ -37,16 +44,19 @@ function handleChange(e){
 }
 
 // UPDATE
-function handleSubmit(){
-    fetch(`${url}/${id}`)
-    method = 'PATCH'
-    headers = {
-        'Content-Type': 'application/json'
-    }
-    body = JSON.stringify()
+function handleSubmit(e){
+    e.preventDefault()
+
+    fetch(`${url}/${id}`,{
+        method:'PATCH',
+        headers:{
+            'Content-Type': 'application/json'
+        },
+        body:JSON.stringify(newArt),
+    })
     .then(res => res.json())
     .then(na => {
-        let updatedArt = art.map(artpiece =>{
+        const updatedArt = art.map(artpiece =>{
             if(artpiece.id === id){
                 artpiece.artist = na.artist,
                 artpiece.title = na.title,
@@ -62,19 +72,25 @@ function handleSubmit(){
     })
     .catch(err => console.log(err))
 }
+
 return(
     <div className='card'>
         <h2>{artist}</h2>
-        <img src={image} alt={name}/>
+        <img id='image' src={image} alt={title}/>
         <h2>{title}</h2>
-        <h2>{price}</h2>
+        <h2>${price}</h2>
         <h2>{category}</h2>
         <form onSubmit={handleSubmit}>
-            <input name='New Artist:' type='text' placeholder='enter new artist...' value={newArt.artist} onChange={handleChange}/>
-            <input name='New Title:' type='text' placeholder='enter new title...' value={newArt.title} onChange={handleChange}/>
-            <input name='New Image:' type='text' placeholder='enter new image...' value={newArt.artist} onChange={handleChange}/>
-            <input name='New Price:' type='number' placeholder='enter new price...' value={newArt.price} onChange={handleChange}/>
-            <input name='New Category:' type='text' placeholder='enter new category...' value={newArt.artist} onChange={handleChange}/>
+            <input name='artist' type='text' placeholder='enter new artist...' value={newArt.artist} onChange={handleChange}/>
+            <input name='title' type='text' placeholder='enter new title...' value={newArt.title} onChange={handleChange}/>
+            <input name='image' type='text' placeholder='enter new image...' value={newArt.image} onChange={handleChange}/>
+            <input name='price' type='number' placeholder='enter new price...' value={newArt.price} onChange={handleChange}/>
+            <select name="category" value={newArt.category} onChange={handleChange}>
+                <option value="">Select Category</option>
+                <option value="painting">painting</option>
+                <option value="sculpture">sculpture</option>
+                <option value="photography">photography</option>
+            </select><br></br>
             <button type='submit'>Update</button>
         </form>
         <button type='button' onClick={handleDelete}>Delete</button>

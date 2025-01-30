@@ -1,0 +1,150 @@
+.card {
+  width: 320px;
+  background: #fff;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin: 20px auto;
+  transition: 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+.card h2 {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+#image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+/* Smaller form */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+input, select {
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+button {
+  background: #007bff;
+  color: white;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+button[type="button"] {
+  background: #ff4d4d;
+}
+
+button[type="button"]:hover {
+  background: #d43f3f;
+}
+
+/* ABOUT */
+.about-artwork-container {
+  text-align: center;
+  padding: 40px;
+  max-width: 800px;
+  margin: auto;
+}
+
+.about-artwork-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
+}
+
+.about-artwork-image {
+  width: 300px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.about-artwork-content p {
+  font-size: 16px;
+  color: #333;
+  max-width: 400px;
+  line-height: 1.5;
+}
+
+/* contact page */
+.contact-container {
+  text-align: center;
+  padding: 40px;
+  max-width: 600px;
+  margin: auto;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.contact-form textarea {
+  height: 100px;
+}
+
+.contact-form button {
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.contact-form button:hover {
+  background-color: #555;
+}
+
+#header{
+  background-color: rgb(219, 190, 223);
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+#link-nav{
+  color: rgb(102, 37, 99);
+  font-size: 17px;
+}
+

@@ -1,18 +1,21 @@
 import React from 'react'
-import Artcard from Artcard
+import Artcard from '/components/Artcard'
 
-function ArtList({art,Setart}){
+function Artlist({art,setArt}){
 
     return(
         <ul className='cards'>
-            {art.length > 0?art.map(artlist => (
-                <li  key={artlist.id}>
+            {art.length > 0?art.map(artpiece => (
+                <li  key={artpiece.id}>
                     <Artcard 
-                        artist = {artlist.artist}
-                        title = {artlist.title}
-                        image = {artlist.image}
-                        price = {artlist.price}
-                        category = {artlist.category}
+                        artist = {artpiece.artist}
+                        id = {artpiece.id}
+                        title = {artpiece.title}
+                        image = {artpiece.image}
+                        price = {artpiece.price}
+                        category = {artpiece.category}
+                        art = {art}
+                        setArt = {setArt}
                     />
                  </li>  
             )):null}
